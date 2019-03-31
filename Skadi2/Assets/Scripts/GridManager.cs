@@ -54,14 +54,16 @@ public class GridManager : MonoBehaviour
             for (int x = 0; x < line.Length; x++)
             {
                 GameObject tile;
-                GameObject playerObject;
                 //create tiles based on ascii
                 switch (line[x])
                 {
-                    case 'S':
+                    case 'P':
                         tile = Instantiate(startTile);
-                        tile.GetComponent<GoalTile>();
+                        tile.GetComponent<StartTile>();
                         tile.transform.position = new Vector3(x - line.Length / 2f,0f, inputLines.Length / 2f - y);
+                        //create and set player pos
+                        GameObject playerObject = Instantiate(player);
+                        playerObject.transform.position =  new Vector3(x - line.Length / 2f,.75f, inputLines.Length / 2f - y);
                         break;
                     case 'x':
                         tile = Instantiate(iceTile);
@@ -73,14 +75,7 @@ public class GridManager : MonoBehaviour
                         tile.GetComponent<GoalTile>();
                         tile.transform.position = new Vector3(x - line.Length / 2f,0f, inputLines.Length / 2f - y);
                         break;
-                    case 'P':
-                        tile = Instantiate(startTile);
-                        tile.GetComponent<StartTile>();
-                        tile.transform.position = new Vector3(x - line.Length / 2f,0f, inputLines.Length / 2f - y);
-                        //create and set player pos
-                        playerObject = Instantiate(player);
-                        playerObject.transform.position =  new Vector3(x - line.Length / 2f,.5f, inputLines.Length / 2f - y);
-                        break;
+                   
                 }
             }
         }
