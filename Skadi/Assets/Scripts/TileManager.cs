@@ -14,8 +14,11 @@ public class TileManager : MonoBehaviour
     [Header("Tile Prefabs")] 
     public GameObject iceTile;
     public GameObject iceTileCracked;
+    public GameObject startTile;
     public GameObject goalTile;
     public GameObject wallTile;
+    [Header("Player Prefab")] 
+    public GameObject player;
     
     void Start()
     {
