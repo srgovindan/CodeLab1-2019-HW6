@@ -29,7 +29,7 @@ public class TileManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+       
        CreateGrid();
     }
 
@@ -58,7 +58,7 @@ public class TileManager : MonoBehaviour
         Tile newTile = new Tile();
         newTile.x = x;
         newTile.y = y;
-    
+        
         newTile.tileObject = Instantiate(iceTile);
         newTile.tileObject.transform.position = new Vector3(x*1f,0f, y*1f);
         return newTile;
