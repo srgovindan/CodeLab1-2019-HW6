@@ -37,9 +37,10 @@ public class TileManager : MonoBehaviour
     { 
         // Initialize Grid Array
         Grid = new Tile[GridSizeX][];
-        Debug.Log(Grid);
-        Debug.Log(Grid[0]);
-       // for Grid.
+        for (int i = 0; i < GridSizeX; i++)
+        {
+            Grid[i] = new Tile[GridSizeY];
+        }
         
         // Create grid of tiles
         for (int i = 0; i < GridSizeX; i++)
