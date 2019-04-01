@@ -33,18 +33,18 @@ public class Player : MonoBehaviour
         {
             y++;
         }
-        if (Input.GetKeyDown(DownKey))
+        else if (Input.GetKeyDown(DownKey))
         {
             y--;
         }
-        if (Input.GetKeyDown(LeftKey))
+        else if (Input.GetKeyDown(LeftKey))
         {
             x--;
         }
-        if (Input.GetKeyDown(RightKey))
+        else if (Input.GetKeyDown(RightKey))
         {
             x++;
         }
-        TileManager.instance.MoveObject(x,y,gameObject);
+        GridManager.TM.MoveObject(x,y,gameObject);
     }
 }

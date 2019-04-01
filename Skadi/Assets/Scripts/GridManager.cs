@@ -2,31 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileManager : MonoBehaviour
+public class GridManager : MonoBehaviour
 {
 
-    public static TileManager instance;
+    public static GridManager TM;
     
-    public Tile[][] Grid;
+    public Cell[][] Grid;
     public int GridSizeX;
     public int GridSizeY;
 
     [Header("Tile Prefabs")] 
     public GameObject iceTile;
-    public GameObject iceTileCracked;
-    public GameObject startTile;
-    public GameObject goalTile;
-    public GameObject wallTile;
+
     [Header("Player Prefab")] 
     public GameObject player;
     
     void Start()
     {
         // SINGLETON
-        if (instance == null)
+        if (TM == null)
         {
             DontDestroyOnLoad(gameObject);
-            instance = this;
+            TM = this;
         }
         else
         {
@@ -39,10 +36,10 @@ public class TileManager : MonoBehaviour
     void CreateGrid()
     { 
         // Initialize Grid Array
-        Grid = new Tile[GridSizeX][];
+        Grid = new Cell[GridSizeX][];
         for (int i = 0; i < GridSizeX; i++)
         {
-            Grid[i] = new Tile[GridSizeY];
+            Grid[i] = new Cell[GridSizeY];
         }
         
         // Create grid of tiles
@@ -51,22 +48,24 @@ public class TileManager : MonoBehaviour
             for (int j = 0; j < GridSizeY; j++)
             {
                 // Create a tile at x,y 
-                Grid[i][j] = CreateTile(i, j);
+                Grid[i][j] = CreateCell(i, j);
             }
         } 
     }
 
-    Tile CreateTile(int x, int y)
+    Cell CreateCell(int x, int y)
     {
-        Tile newTile = new Tile();
-        newTile.x = x;
-        newTile.y = y;
+        Cell newCell = new Cell();
+        newCell.x = x;
+        newCell.y = y;
         
-        newTile.tileObject = Instantiate(iceTile);
-        newTile.tileObject.transform.position = new Vector3(x*1f,0f, y*1f);
-        return newTile;
+        newCell.tileObject = Instantiate(iceTile);
+        newCell.tileObject.transform.position = new Vector3(x*1f,0f, y*1f);
+        return newCell;
     }
 
+    
+    
     public void MoveObject(int x, int y, GameObject ob)
     {
         ob.transform.position = new Vector3(x,0.75f,y);
