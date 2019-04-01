@@ -335,6 +335,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+  UpKey: 273
+  DownKey: 274
+  LeftKey: 276
+  RightKey: 275
 --- !u!1001 &8898589016352856312
 PrefabInstance:
   m_ObjectHideFlags: 0

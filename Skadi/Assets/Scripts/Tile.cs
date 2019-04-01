@@ -5,6 +5,6 @@ using UnityEngine;
 public class Tile
 {
    public int x, y;
-   protected bool isOccupied;
+   public bool isOccupied;
    public GameObject tileObject;
 }

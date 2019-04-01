@@ -58,24 +58,24 @@ public class GridManager : MonoBehaviour
                 switch (line[x])
                 {
                     case 'P':
-                        tile = Instantiate(startTile);
-                        tile.GetComponent<StartTile>();
+                        tile = Instantiate(iceTile);
+                        tile.AddComponent<StartTile>();
                         tile.transform.position = new Vector3(x - line.Length / 2f,0f, inputLines.Length / 2f - y);
                         //create and set player pos
                         GameObject playerObject = Instantiate(player);
+                        
                         playerObject.transform.position =  new Vector3(x - line.Length / 2f,.75f, inputLines.Length / 2f - y);
                         break;
                     case 'x':
                         tile = Instantiate(iceTile);
-                        tile.GetComponent<IceTile>();
+                        tile.AddComponent<IceTile>();
                         tile.transform.position = new Vector3(x - line.Length / 2f,0f, inputLines.Length / 2f - y);
                         break;
                     case 'G':
-                        tile = Instantiate(goalTile);
-                        tile.GetComponent<GoalTile>();
+                        tile = Instantiate(iceTile);
+                        tile.AddComponent<GoalTile>();
                         tile.transform.position = new Vector3(x - line.Length / 2f,0f, inputLines.Length / 2f - y);
-                        break;
-                   
+                        break; 
                 }
             }
         }

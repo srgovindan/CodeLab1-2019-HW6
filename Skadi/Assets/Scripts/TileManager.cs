@@ -66,7 +66,12 @@ public class TileManager : MonoBehaviour
         newTile.tileObject.transform.position = new Vector3(x*1f,0f, y*1f);
         return newTile;
     }
-    
+
+    public void MoveObject(int x, int y, GameObject ob)
+    {
+        ob.transform.position = new Vector3(x,0.75f,y);
+        Grid[x][y].isOccupied = true;
+    }
 
     
     //TODO: Write a function to see if all Ice Tiles are cracked 
