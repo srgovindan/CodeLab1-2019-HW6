@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //LoadLevel(1);
     }
 
     // Update is called once per frame
@@ -41,15 +41,23 @@ public class GameManager : MonoBehaviour
                 GameObject tile;
                 switch (line[x])
                 {
-                    case 'X':
+                    case '*':
+                        //load a goal tile prefab
+                        
                         //tile = Instantiate(BlackHole);
                         //Debug.Log("Black Hole Instantiated: " + tile.name);
                         //tile.transform.position = new Vector3(x - line.Length / 2f, inputLines.Length / 2f - y);
                         //tile.transform.SetParent(HolesManager.me.holeParent);
                         break;
-                    case 'P':
+                    case 'x':
+                        //load an ice tile prefab
+                        
                         //tile = Player;
                         //PlayerPosReset(new Vector2(x - line.Length / 2f, inputLines.Length / 2f - y));
+                        break;
+                    case '@':
+                        //move player to that grid coord
+                        //load a start tile prefab
                         break;
                     default:
                         tile = null;

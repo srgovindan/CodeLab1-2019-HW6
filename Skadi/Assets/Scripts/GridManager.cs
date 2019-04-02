@@ -58,18 +58,20 @@ public class GridManager : MonoBehaviour
         Cell newCell = new Cell();
         newCell.x = x;
         newCell.y = y;
-        
-        newCell.tileObject = Instantiate(iceTile);
-        newCell.tileObject.transform.position = new Vector3(x*1f,0f, y*1f);
         return newCell;
     }
 
     
-    
-    public void MoveObject(int x, int y, GameObject ob)
+    public void MoveGridObject(int x, int y, int xNew, int yNew, GameObject ob)
     {
-        ob.transform.position = new Vector3(x,0.75f,y);
-        Grid[x][y].isOccupied = true;
+        ob.transform.position = new Vector3(xNew,0.75f,yNew);
+        Grid[x][y].tileObject = null;
+        Grid[xNew][yNew].tileObject = ob;
+        if (ob.name == "Player")
+        {
+            Grid[xNew][yNew].isOccupied = true;
+            Grid[x][y].isOccupied = false;
+        }
     }
 
     
