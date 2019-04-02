@@ -64,16 +64,27 @@ public class GridManager : MonoBehaviour
     
     public void MoveGridObject(int x, int y, int xNew, int yNew, GameObject ob)
     {
-        ob.transform.position = new Vector3(xNew,0.75f,yNew);
-        Grid[x][y].tileObject = null;
-        Grid[xNew][yNew].tileObject = ob;
-        if (ob.name == "Player")
+        // if the grid is not occupied, let the object move there
+        if (!Grid[xNew][yNew].isOccupied)
         {
-            Grid[xNew][yNew].isOccupied = true;
-            Grid[x][y].isOccupied = false;
+            ob.transform.position = new Vector3(xNew, 0.75f, yNew);
+//        if the object is not a player, we can use this to set the cell.tileObject to a different GameObject
+//        Grid[x][y].tileObject = null;
+//        Grid[xNew][yNew].tileObject = ob;
+            if (ob.name == "Player")
+            {
+                Grid[xNew][yNew].isOccupied = true;
+                Grid[x][y].isOccupied = false;
+            }
+        }
+        // if the grid is occupied, play a little animation or sfx
+        else
+        {
+         //TODO: play a sfx and/or animation   
         }
     }
 
+    
     
     //TODO: Write a function to see if all Ice Tiles are cracked 
 }
