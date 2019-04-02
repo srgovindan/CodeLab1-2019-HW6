@@ -53,10 +53,10 @@ public class Player : MonoBehaviour
             x = xNew;
             y = yNew;
         }
-//        else
-//        {
-//            xNew = x;
-//            yNew = y;
-//        }
+        else
+        {
+            xNew = x;
+            yNew = y;
+        }
     }
 }
