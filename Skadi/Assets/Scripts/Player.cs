@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     
-    public int x, y,xOld,yOld;
+    public int x, y,xNew,yNew;
 
     [Header("Keycodes")] 
     public KeyCode UpKey;
@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
         //set inital player position
         x = 0;
         y = 0;
-        xOld = 0;
-        yOld = 0;
+        xNew = 0;
+        yNew = 0;
     }
 
     void Update()
@@ -33,23 +33,30 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(UpKey))
         {
-            y++;
+            yNew++;
         }
         else if (Input.GetKeyDown(DownKey))
         {
-            y--;
+            yNew--;
         }
         else if (Input.GetKeyDown(LeftKey))
         {
-            x--;
+            xNew--;
         }
         else if (Input.GetKeyDown(RightKey))
         {
-            x++;
+            xNew++;
         }
-        GridManager.TM.MoveGridObject(xOld,yOld,x,y,gameObject);
-        xOld = x;
-        yOld = y;
-
+        if (GridManager.TM.CellExistsOnGrid(x,y))
+        {
+            GridManager.TM.MoveGridObject(x,y,xNew,yNew,gameObject);
+            x = xNew;
+            y = yNew;
+        }
+//        else
+//        {
+//            xNew = x;
+//            yNew = y;
+//        }
     }
 }

@@ -80,11 +80,21 @@ public class GridManager : MonoBehaviour
         // if the grid is occupied, play a little animation or sfx
         else
         {
-         //TODO: play a sfx and/or animation   
+         //TODO: play a sfx and/or animation. Use Bfxr
         }
     }
 
-    
+    public bool CellExistsOnGrid(int x, int y)
+    {
+        if (Grid[x][y] != null)
+        {
+           // Debug.Log("Cell exists");
+            return true;
+        }
+        //otherwise return false
+        //Debug.Log("Cell doesnay exist");
+        return false;
+    }
     
     //TODO: Write a function to see if all Ice Tiles are cracked 
 }
