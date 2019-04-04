@@ -64,6 +64,9 @@ public class GridManager : MonoBehaviour
     
     public void MoveGridObject(int x, int y, int xNew, int yNew, GameObject ob)
     {
+        if(xNew < 0)
+            Debug.Log("aaaaa");
+        // if the cell exists on the grid and is within the grid bounds
         if (CellExistsOnGrid(xNew,yNew))
         {
             // if the grid is not occupied, let the object move there
@@ -91,13 +94,10 @@ public class GridManager : MonoBehaviour
 
     public bool CellExistsOnGrid(int x, int y)
     {
-        if (x < 0 || x > GridSizeX)
+        if (x < 0 || x > GridSizeX-1 || y < 0 || y > GridSizeY-1)
         {
-            if (y < 0 || y > GridSizeY)
-            {
                 Debug.Log("Cell does not exist");
                 return false;
-            }
         }
         Debug.Log("Cell exists");
         return true;
