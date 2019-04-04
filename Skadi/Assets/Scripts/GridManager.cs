@@ -81,10 +81,11 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        // if the grid is occupied, play a little animation or sfx
-        else
+        // if the grid is occupied or is out of bounds, play a little animation or sfx
+        if(!CellExistsOnGrid(xNew,yNew))
         {
-         //TODO: play a sfx and/or animation. Use Bfxr
+            Debug.Log("Playing audio");
+            AudioManager.AM.PlayAudioClip(0);
         }
     }
 
