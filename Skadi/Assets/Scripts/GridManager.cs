@@ -64,19 +64,23 @@ public class GridManager : MonoBehaviour
     
     public void MoveGridObject(int x, int y, int xNew, int yNew, GameObject ob)
     {
-        // if the grid is not occupied, let the object move there
-        if (!Grid[xNew][yNew].isOccupied)
+        if (CellExistsOnGrid(xNew,yNew))
         {
-            ob.transform.position = new Vector3(xNew, 0.75f, yNew);
+            // if the grid is not occupied, let the object move there
+            if (!Grid[xNew][yNew].isOccupied)
+            {
+                ob.transform.position = new Vector3(xNew, 0.75f, yNew);
 //        if the object is not a player, we can use this to set the cell.tileObject to a different GameObject
 //        Grid[x][y].tileObject = null;
 //        Grid[xNew][yNew].tileObject = ob;
-            if (ob.name == "Player")
-            {
-                Grid[xNew][yNew].isOccupied = true;
-                Grid[x][y].isOccupied = false;
+                if (ob.name == "Player")
+                {
+                    Grid[xNew][yNew].isOccupied = true;
+                    Grid[x][y].isOccupied = false;
+                }
             }
         }
+
         // if the grid is occupied, play a little animation or sfx
         else
         {
@@ -86,14 +90,16 @@ public class GridManager : MonoBehaviour
 
     public bool CellExistsOnGrid(int x, int y)
     {
-        if (Grid[x][y] != null)
+        if (x < 0 || x > GridSizeX)
         {
-           // Debug.Log("Cell exists");
-            return true;
+            if (y < 0 || y > GridSizeY)
+            {
+                Debug.Log("Cell does not exist");
+                return false;
+            }
         }
-        //otherwise return false
-        //Debug.Log("Cell doesnay exist");
-        return false;
+        Debug.Log("Cell exists");
+        return true;
     }
     
     //TODO: Write a function to see if all Ice Tiles are cracked 

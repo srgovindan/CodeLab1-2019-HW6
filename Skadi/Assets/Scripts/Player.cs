@@ -47,16 +47,16 @@ public class Player : MonoBehaviour
         {
             xNew++;
         }
-        if (GridManager.TM.CellExistsOnGrid(x,y))
+        if (!GridManager.TM.CellExistsOnGrid(xNew,yNew))
+        {
+            xNew = x;
+            yNew = y;
+        }
+        if (GridManager.TM.CellExistsOnGrid(xNew,yNew))
         {
             GridManager.TM.MoveGridObject(x,y,xNew,yNew,gameObject);
             x = xNew;
             y = yNew;
-        }
-        else
-        {
-            xNew = x;
-            yNew = y;
         }
     }
 }
