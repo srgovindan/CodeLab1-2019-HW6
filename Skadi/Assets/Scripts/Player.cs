@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         }
         if (GridManager.GM.CellExistsOnGrid(xNew,yNew))
         {
-            GridManager.GM.MoveGridObject(x,y,xNew,yNew,gameObject);
+            GridManager.GM.MoveGridObject(x,y,xNew,yNew,this);
             x = xNew;
             y = yNew;
         }
