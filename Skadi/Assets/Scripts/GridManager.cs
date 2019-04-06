@@ -82,7 +82,7 @@ public class GridManager : MonoBehaviour
     public void MoveGridObject(int x, int y, int xNew, int yNew, Player ob)
     {
         // if the cell exists on the grid and is within the grid bounds
-        if (CellExistsOnGrid(xNew,yNew))
+        if (TileExistsOnGrid(xNew,yNew))
         {
             ob.MovePlayer(xNew,yNew);
             // if the cell has a tile, let the object move there
@@ -97,13 +97,13 @@ public class GridManager : MonoBehaviour
 //            }
         }
         // if the grid is occupied or is out of bounds, play a little animation or sfx
-        if(!CellExistsOnGrid(xNew,yNew))
+        if(!TileExistsOnGrid(xNew,yNew))
         {
             Debug.Log("Playing audio");
             AudioManager.AM.PlayAudioClip(0);
         }
     }
-    public bool CellExistsOnGrid(int x, int y)
+    public bool TileExistsOnGrid(int x, int y)
     {
         if (x < 0 || x > GridSizeX-1 || y < 0 || y > GridSizeY-1)
         {
