@@ -60,20 +60,16 @@ public class GridManager : MonoBehaviour
         newCell.y = y;
         return newCell;
     }
-
     
     public void MoveGridObject(int x, int y, int xNew, int yNew, GameObject ob)
     {
         // if the cell exists on the grid and is within the grid bounds
         if (CellExistsOnGrid(xNew,yNew))
         {
-            // if the grid is not occupied, let the object move there
-            if (!Grid[xNew][yNew].isOccupied)
+            // if the cell has a tile, let the object move there
+            if (Grid[xNew][yNew].cellHasTile)
             {
                 ob.transform.position = new Vector3(xNew, 0.75f, yNew);
-//        if the object is not a player, we can use this to set the cell.tileObject to a different GameObject
-//        Grid[x][y].tileObject = null;
-//        Grid[xNew][yNew].tileObject = ob;
                 if (ob.name == "Player")
                 {
                     Grid[xNew][yNew].isOccupied = true;
@@ -81,7 +77,6 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
-
         // if the grid is occupied or is out of bounds, play a little animation or sfx
         if(!CellExistsOnGrid(xNew,yNew))
         {
@@ -106,10 +101,10 @@ public class GridManager : MonoBehaviour
     
      /// <summary>
     /// Takes an int number input and loads the corresponding level from a text file.
+    /// Levels are currently loaded up side down when seen on the Ascii file.
     /// </summary>
     public void LoadLevel(int levelIndex)
     {
-        
         // hold the level file path in a string
         string filePath = Application.dataPath + "/level" + levelIndex + ".txt";
         // if the level file does not exist, create it
@@ -132,16 +127,19 @@ public class GridManager : MonoBehaviour
                         //load a goal tile prefab
                         tile = Instantiate(Resources.Load<GameObject>("Prefabs/GoalTile"));
                         tile.GetComponent<Tile>().MoveTile(x,y);
+                        Grid[x][y].cellHasTile = true;
                         break;
                     case 'x':
                         //load an ice tile prefab
                         tile = Instantiate(Resources.Load<GameObject>("Prefabs/IceTile"));
                         tile.GetComponent<Tile>().MoveTile(x,y);
+                        Grid[x][y].cellHasTile = true;
                         break;
                     case '@':
                         //load a start tile prefab
                         tile = Instantiate(Resources.Load<GameObject>("Prefabs/StartTile"));
                         tile.GetComponent<Tile>().MoveTile(x,y);
+                        Grid[x][y].cellHasTile = true;
                         //move player to that grid coord
                         GameObject player = GameObject.Find("Player");                 
                         player.GetComponent<Player>().MovePlayer(x,y);

@@ -6,6 +6,7 @@ public class Cell
 {
    public int x, y;
    public bool isOccupied;//for player
-   public GameObject tileObject;//for tiles
+   public bool cellHasTile;
+   //public GameObject tileObject;//for tiles
    
 }

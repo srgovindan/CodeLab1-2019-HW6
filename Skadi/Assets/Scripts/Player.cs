@@ -17,11 +17,7 @@ public class Player : MonoBehaviour
     
     void Start()
     {
-        //set inital player position
-//        x = 0;
-//        y = 0;
-//        xNew = 0;
-//        yNew = 0;
+
     }
 
     void Update()
@@ -62,6 +58,10 @@ public class Player : MonoBehaviour
 
     public void MovePlayer(int x, int y)
     {
+        this.x = x;
+        this.y = y;
+        xNew = x;
+        yNew = y;
         transform.position = new Vector3(x, 0.75f, y);
     }
 }
