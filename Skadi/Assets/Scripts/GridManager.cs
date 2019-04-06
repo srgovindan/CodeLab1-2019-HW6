@@ -98,7 +98,6 @@ public class GridManager : MonoBehaviour
     
     //TODO: Write a function to see if all Ice Tiles are cracked 
     
-    
      /// <summary>
     /// Takes an int number input and loads the corresponding level from a text file.
     /// Levels are currently loaded up side down when seen on the Ascii file.

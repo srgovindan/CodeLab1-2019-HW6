@@ -108,7 +108,7 @@ MonoBehaviour:
   y: 0
   xNew: 0
   yNew: 0
-  UpKey: 0
-  DownKey: 0
-  LeftKey: 0
-  RightKey: 0
+  UpKey: 273
+  DownKey: 274
+  LeftKey: 276
+  RightKey: 275
