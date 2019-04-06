@@ -70,11 +70,11 @@ public class GridManager : MonoBehaviour
             if (Grid[xNew][yNew].cellHasTile)
             {
                 ob.transform.position = new Vector3(xNew, 0.75f, yNew);
-                if (ob.name == "Player")
-                {
-                    Grid[xNew][yNew].isOccupied = true;
-                    Grid[x][y].isOccupied = false;
-                }
+//                if (ob.name == "Player")
+//                {
+////                    Grid[xNew][yNew].isOccupied = true;
+////                    Grid[x][y].isOccupied = false;
+//                }
             }
         }
         // if the grid is occupied or is out of bounds, play a little animation or sfx
@@ -140,8 +140,13 @@ public class GridManager : MonoBehaviour
                         tile.GetComponent<Tile>().MoveTile(x,y);
                         Grid[x][y].cellHasTile = true;
                         //move player to that grid coord
-                        GameObject player = GameObject.Find("Player");                 
+                        GameObject player = Instantiate(Resources.Load<GameObject>("Prefabs/Player"));                 
+                        //GameObject player = GameObject.Find("Player");                 
                         player.GetComponent<Player>().MovePlayer(x,y);
+                        break;
+                    case '.':
+                        //null the cell object when there is supposed to be an empty space
+                        Grid[x][y] = null;
                         break;
                     default:
                         tile = null;
@@ -150,4 +155,5 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+     
 }
