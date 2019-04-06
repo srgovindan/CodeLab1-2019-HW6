@@ -8,14 +8,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //LoadLevel(1);
+        LoadLevel(1);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    } 
     
     /// <summary>
     /// Takes an int number input and loads the corresponding level from a text file.
@@ -43,21 +37,21 @@ public class GameManager : MonoBehaviour
                 {
                     case '*':
                         //load a goal tile prefab
-                        
-                        //tile = Instantiate(BlackHole);
-                        //Debug.Log("Black Hole Instantiated: " + tile.name);
-                        //tile.transform.position = new Vector3(x - line.Length / 2f, inputLines.Length / 2f - y);
-                        //tile.transform.SetParent(HolesManager.me.holeParent);
+                        tile = Instantiate(Resources.Load<GameObject>("Prefabs/GoalTile"));
+                        tile.GetComponent<Tile>().MoveTile(x,y);
                         break;
                     case 'x':
                         //load an ice tile prefab
-                        
-                        //tile = Player;
-                        //PlayerPosReset(new Vector2(x - line.Length / 2f, inputLines.Length / 2f - y));
+                        tile = Instantiate(Resources.Load<GameObject>("Prefabs/IceTile"));
+                        tile.GetComponent<Tile>().MoveTile(x,y);
                         break;
                     case '@':
-                        //move player to that grid coord
                         //load a start tile prefab
+                        tile = Instantiate(Resources.Load<GameObject>("Prefabs/StartTile"));
+                        tile.GetComponent<Tile>().MoveTile(x,y);
+                        //move player to that grid coord
+                        GameObject player = GameObject.Find("Player");                 
+                        player.GetComponent<Player>().MovePlayer(x,y);
                         break;
                     default:
                         tile = null;

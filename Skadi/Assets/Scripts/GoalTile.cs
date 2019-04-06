@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceTile : Tile
+public class GoalTile : Tile
 {
-   
     // Start is called before the first frame update
     void Start()
     {

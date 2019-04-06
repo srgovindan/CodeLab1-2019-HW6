@@ -11,10 +11,8 @@ public class GridManager : MonoBehaviour
     public int GridSizeX;
     public int GridSizeY;
 
-    [Header("Tile Prefabs")] 
+    [Header("Prefabs")] 
     public GameObject iceTile;
-
-    [Header("Player Prefab")] 
     public GameObject player;
     
     void Start()
@@ -64,8 +62,6 @@ public class GridManager : MonoBehaviour
     
     public void MoveGridObject(int x, int y, int xNew, int yNew, GameObject ob)
     {
-        if(xNew < 0)
-            Debug.Log("aaaaa");
         // if the cell exists on the grid and is within the grid bounds
         if (CellExistsOnGrid(xNew,yNew))
         {
