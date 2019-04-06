@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    //TODO: Consolidate Tile and Cell class
     public int x, y;
     // Start is called before the first frame update
     void Start()
