@@ -6,7 +6,7 @@ using System.IO;
 public class GridManager : MonoBehaviour
 {
 
-    public static GridManager TM;
+    public static GridManager GM;
     
     public Cell[][] Grid;
     public int GridSizeX;
@@ -19,10 +19,10 @@ public class GridManager : MonoBehaviour
     void Start()
     {
         // SINGLETON
-        if (TM == null)
+        if (GM == null)
         {
             DontDestroyOnLoad(gameObject);
-            TM = this;
+            GM = this;
         }
         else
         {
