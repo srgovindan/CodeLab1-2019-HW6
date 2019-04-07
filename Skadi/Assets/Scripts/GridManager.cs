@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
     public static GridManager GM;
+    public static GameObject player;
     public GameObject[][] Grid;
+    [HideInInspector]
+    public int levelNum;
     private int GridSizeX;
     private int GridSizeY;
-    public static GameObject player;
-
-    public int levelNum;
     
+    public int maxLevel;
+    public Text gameTextBox;
+    [Header("Text Strings")] 
+    public string startGameText;
+    public string wonGameText;
+   
     [Header("Prefabs")] 
     public GameObject playerPrefab;
     public GameObject startTile;
@@ -33,8 +40,9 @@ public class GridManager : MonoBehaviour
             Destroy(gameObject);
         }
         
+        StartCoroutine(DisplayUIText(startGameText));
         levelNum = 1;
-        LoadLevel(levelNum);
+        StartCoroutine(DelayedLoadLevel(levelNum));
     }
     public void ReloadLevel()
     {
@@ -148,6 +156,15 @@ public class GridManager : MonoBehaviour
     public void LoadLevel(int i)
     {
         ReloadLevel();
+        //display congratulations if all levels are finished
+        if (levelNum > maxLevel)
+        {
+            //play sfx
+            AudioManager.AM.PlayAudioClip(6);
+            //display congrats message
+            StartCoroutine(DisplayUIText(wonGameText,300f));
+            return;
+        }       
         GetLevelLayoutData(i);
         CreateGrid();
         LoadLevelObjects(i);
@@ -192,9 +209,16 @@ public class GridManager : MonoBehaviour
         }
         return false;
     }
-    public IEnumerator DelayedLoadLevel(float f)
+    public IEnumerator DelayedLoadLevel(float t)
     {
-        yield return new WaitForSeconds(f);
+        yield return new WaitForSeconds(t);
         LoadLevel(levelNum);
+    }
+
+    public IEnumerator DisplayUIText(string stringToDisplay, float t=3f)
+    {
+        gameTextBox.text = stringToDisplay;
+        yield return new WaitForSeconds(t);
+        gameTextBox.text = "";
     }
 }
