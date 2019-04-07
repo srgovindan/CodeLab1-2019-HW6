@@ -3,22 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
-    
-    public int x, y,xNew,yNew;
-
+{   
+    public int x, y;
     [Header("Keycodes")] 
     public KeyCode UpKey;
     public KeyCode DownKey;
     public KeyCode LeftKey;
     public KeyCode RightKey;
-    
-    
-    
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -27,41 +18,40 @@ public class Player : MonoBehaviour
 
     void MovePlayer()
     {
+        //check for player input
         if (Input.GetKeyDown(UpKey))
         {
-            yNew++;
+            y++;
         }
         else if (Input.GetKeyDown(DownKey))
         {
-            yNew--;
+            y--;
         }
         else if (Input.GetKeyDown(LeftKey))
         {
-            xNew--;
+            x--;
         }
         else if (Input.GetKeyDown(RightKey))
         {
-            xNew++;
+            x++;
         }
-        if (!GridManager.GM.TileExistsOnGrid(xNew,yNew))
+
+        //move the player if the cell exists
+        if (GridManager.GM.TileExistsOnGrid(x, y))
         {
-            xNew = x;
-            yNew = y;
+            MovePlayerOnGrid(x,y);
         }
-        if (GridManager.GM.TileExistsOnGrid(xNew,yNew))
+        else
         {
-            GridManager.GM.MoveGridObject(x,y,xNew,yNew,this);
-            x = xNew;
-            y = yNew;
+            //play a sfx
+            AudioManager.AM.PlayAudioClip(1);
         }
     }
 
-    public void MovePlayer(int x, int y)
+    public void MovePlayerOnGrid(int x, int y)
     {
         this.x = x;
         this.y = y;
-        xNew = x;
-        yNew = y;
         transform.position = new Vector3(x, 0.75f, y);
     }
 }

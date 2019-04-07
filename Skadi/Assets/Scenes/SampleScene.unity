@@ -292,8 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622b43f4a8b2d4f9797d2f8c482da243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridSizeX: 5
-  GridSizeY: 7
   iceTile: {fileID: 8268870915298155883, guid: b79f8634cca7a4a9281d6dd74648eb2f, type: 3}
   player: {fileID: 5317685443873441742, guid: cb446e7fa1a5d4d2c8100cb5bd6c9f6d, type: 3}
 --- !u!4 &545335559
@@ -341,10 +339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
+  - {fileID: 0}
   - {fileID: 8300000, guid: 8d6cde966c25b44079421901869e68f6, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!82 &2089013067
 AudioSource:
   m_ObjectHideFlags: 0
