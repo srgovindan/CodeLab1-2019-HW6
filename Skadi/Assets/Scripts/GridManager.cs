@@ -14,10 +14,11 @@ public class GridManager : MonoBehaviour
     public int levelNum;
     
     [Header("Prefabs")] 
+    public GameObject playerPrefab;
     public GameObject startTile;
     public GameObject goalTile;
     public GameObject iceTile;
-    public GameObject playerPrefab;
+    public GameObject groundTile;
     
     void Start()
     {
@@ -105,6 +106,12 @@ public class GridManager : MonoBehaviour
                 switch (line[x])
                 {
                     case '*':
+                        //load a goal tile prefab
+                        tile = Instantiate(goalTile);
+                        tile.GetComponent<Tile>().MoveTile(x,y);
+                        Grid[x][y] = tile;
+                        break;
+                    case '#':
                         //load a goal tile prefab
                         tile = Instantiate(goalTile);
                         tile.GetComponent<Tile>().MoveTile(x,y);

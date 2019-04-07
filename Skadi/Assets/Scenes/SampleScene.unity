@@ -293,12 +293,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNum: 0
+  playerPrefab: {fileID: 5317685443873441742, guid: cb446e7fa1a5d4d2c8100cb5bd6c9f6d,
+    type: 3}
   startTile: {fileID: 8268870915298155883, guid: 541c9f5baa4524d1096d6bb88e077087,
     type: 3}
   goalTile: {fileID: 8268870915298155883, guid: ea773ffad61cb457db8c2db903abdeae,
     type: 3}
   iceTile: {fileID: 8268870915298155883, guid: b79f8634cca7a4a9281d6dd74648eb2f, type: 3}
-  playerPrefab: {fileID: 5317685443873441742, guid: cb446e7fa1a5d4d2c8100cb5bd6c9f6d,
+  groundTile: {fileID: 8268870915298155883, guid: 5beb0af7dbf604ad68ce4b29e3d76f2d,
     type: 3}
 --- !u!4 &545335559
 Transform:
