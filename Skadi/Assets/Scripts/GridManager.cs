@@ -5,13 +5,11 @@ using System.IO;
 
 public class GridManager : MonoBehaviour
 {
-
     public static GridManager GM;
-    
     public GameObject[][] Grid;
     private int GridSizeX;
     private int GridSizeY;
-
+    
     [Header("Prefabs")] 
     public GameObject startTile;
     public GameObject goalTile;
@@ -144,6 +142,5 @@ public class GridManager : MonoBehaviour
     }
     
     //TODO: Write a function to see if all Ice Tiles are cracked 
-    
     
 }

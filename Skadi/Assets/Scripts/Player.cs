@@ -18,40 +18,35 @@ public class Player : MonoBehaviour
 
     void MovePlayer()
     {
-        //check for player input
+        //call move function on player input
         if (Input.GetKeyDown(UpKey))
         {
-            y++;
+            MovePlayerOnGrid(x,y++);
         }
         else if (Input.GetKeyDown(DownKey))
         {
-            y--;
+            MovePlayerOnGrid(x,y--);
         }
         else if (Input.GetKeyDown(LeftKey))
         {
-            x--;
+            MovePlayerOnGrid(x--,y);
         }
         else if (Input.GetKeyDown(RightKey))
         {
-            x++;
+            MovePlayerOnGrid(x++,y);
         }
-
-        //move the player if the cell exists
+    }
+    public void MovePlayerOnGrid(int x, int y)
+    {
         if (GridManager.GM.TileExistsOnGrid(x, y))
         {
-            MovePlayerOnGrid(x,y);
+            this.x = x;
+            this.y = y;
+            transform.position = new Vector3(x, 0.75f, y);
         }
         else
         {
-            //play a sfx
             AudioManager.AM.PlayAudioClip(1);
         }
-    }
-
-    public void MovePlayerOnGrid(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-        transform.position = new Vector3(x, 0.75f, y);
     }
 }
