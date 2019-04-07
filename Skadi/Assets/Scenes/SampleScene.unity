@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNum: 0
-  maxLevel: 10
+  maxLevel: 8
   gameTextBox: {fileID: 661865691}
   startGameText: Skadi
   wonGameText: Congratulations!
