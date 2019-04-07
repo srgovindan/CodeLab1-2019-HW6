@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5363820034501933521}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   y: 0
   xNew: 0
   yNew: 0
+  canMove: 0
   UpKey: 273
   DownKey: 274
   LeftKey: 276

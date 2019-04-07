@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IceTile : Tile
 {
@@ -23,9 +24,12 @@ public class IceTile : Tile
         {
             //change texture
             GetComponent<Renderer>().material = BrokenIceMaterial;
-            //player loses and reset level 
-            Debug.Log("Lose");
+            //play sfx
+            AudioManager.AM.PlayAudioClip(4);
             
+            //reload from GM
+            GridManager.GM.ReloadLevel();
+           //TODO:call a GM function to reload
         }
     }
 }

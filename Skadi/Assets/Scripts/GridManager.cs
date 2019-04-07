@@ -10,6 +10,8 @@ public class GridManager : MonoBehaviour
     private int GridSizeX;
     private int GridSizeY;
     public static GameObject player;
+
+    public int levelNum;
     
     [Header("Prefabs")] 
     public GameObject startTile;
@@ -28,9 +30,10 @@ public class GridManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        } 
+        }
         
-        LoadLevel(1);
+        levelNum = 1;
+        LoadLevel(levelNum);
     }
     
     void GetLevelLayoutData(int levelIndex)
@@ -146,6 +149,19 @@ public class GridManager : MonoBehaviour
         //Cell exists
         return true;
     }
+
+    public void ReloadLevel()
+    {
+        Grid = null;
+        GameObject[] tiles =GameObject.FindGameObjectsWithTag("Tile");
+        Destroy(player);
+        foreach (var obj in tiles)
+        {
+            Destroy(obj);
+        }
+        LoadLevel(levelNum);
+    }
+    
     
     //TODO: Write a function to see if all Ice Tiles are cracked 
     
