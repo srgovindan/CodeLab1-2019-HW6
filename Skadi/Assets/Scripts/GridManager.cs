@@ -88,7 +88,7 @@ public class GridManager : MonoBehaviour
         // if the level file does not exist, create it
         if (!File.Exists(filePath))
         {
-            File.WriteAllText(filePath, "X");
+            File.WriteAllText(filePath, "@x#*");
         }
         // reading from file
         string[] inputLines = File.ReadAllLines(filePath);
@@ -112,8 +112,8 @@ public class GridManager : MonoBehaviour
                         Grid[x][y] = tile;
                         break;
                     case '#':
-                        //load a goal tile prefab
-                        tile = Instantiate(goalTile);
+                        //load a ground tile prefab
+                        tile = Instantiate(groundTile);
                         tile.GetComponent<Tile>().MoveTile(x,y);
                         Grid[x][y] = tile;
                         break;
