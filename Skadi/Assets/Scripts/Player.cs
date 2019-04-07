@@ -6,15 +6,21 @@ public class Player : MonoBehaviour
 {   
     public int x, y;
     public int xNew, yNew;//to check the cell player is moving to 
+    public bool canMove;
     [Header("Keycodes")] 
     public KeyCode UpKey;
     public KeyCode DownKey;
     public KeyCode LeftKey;
     public KeyCode RightKey;
 
+    void Start()
+    {
+        canMove = true;
+    }
+
     void Update()
     {
-        if (Input.anyKey)
+        if (Input.anyKey && canMove)
         {
             MovePlayer();
         }
@@ -62,9 +68,21 @@ public class Player : MonoBehaviour
         GridManager.GM.Grid[x][y].GetComponent<Tile>().PlayerSteppedOnTile();
     }
 
+    public void PlayerFallAnimation()
+    {
+        
+        //play sfx
+        AudioManager.AM.PlayAudioClip(4);
+        //lerp animation
+        float fallTime = 0.5f;
+        Vector3.Lerp(new Vector3(x, 0.75f, y), new Vector3(x, 0.5f, y),fallTime);
+    }
+
     void ResetXY()
     {
         xNew = x; 
         yNew = y;
     }
+    
+    
 }

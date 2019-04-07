@@ -106,3 +106,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+  CrackedIceMaterial: {fileID: 2100000, guid: e7037fc4575e742439057d2ab13e5d5e, type: 2}

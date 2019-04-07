@@ -9,6 +9,7 @@ public class GridManager : MonoBehaviour
     public GameObject[][] Grid;
     private int GridSizeX;
     private int GridSizeY;
+    public static GameObject player;
     
     [Header("Prefabs")] 
     public GameObject startTile;
@@ -103,7 +104,7 @@ public class GridManager : MonoBehaviour
                         tile.GetComponent<Tile>().MoveTile(x,y);
                         Grid[x][y] = tile;
                         //move player to that grid coord
-                        GameObject player = Instantiate(playerPrefab);   
+                        player = Instantiate(playerPrefab);   
                         player.GetComponent<Player>().MovePlayerOnGrid(x,y);
                         break;
                     case '.':
