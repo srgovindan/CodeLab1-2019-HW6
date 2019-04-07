@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {   
     public int x, y;
+    public int xNew, yNew;//to check the cell player is moving to 
     [Header("Keycodes")] 
     public KeyCode UpKey;
     public KeyCode DownKey;
@@ -18,35 +19,44 @@ public class Player : MonoBehaviour
 
     void MovePlayer()
     {
-        //call move function on player input
+        //check for player input
         if (Input.GetKeyDown(UpKey))
         {
-            MovePlayerOnGrid(x,y++);
+            yNew++;
         }
         else if (Input.GetKeyDown(DownKey))
         {
-            MovePlayerOnGrid(x,y--);
+            yNew--;
         }
         else if (Input.GetKeyDown(LeftKey))
         {
-            MovePlayerOnGrid(x--,y);
+            xNew--;
         }
         else if (Input.GetKeyDown(RightKey))
         {
-            MovePlayerOnGrid(x++,y);
+            xNew++;
         }
-    }
-    public void MovePlayerOnGrid(int x, int y)
-    {
-        if (GridManager.GM.TileExistsOnGrid(x, y))
+        
+        //move the player if the cell exists
+        if (GridManager.GM.TileExistsOnGrid(xNew, yNew))
         {
-            this.x = x;
-            this.y = y;
-            transform.position = new Vector3(x, 0.75f, y);
+            MovePlayerOnGrid(xNew,yNew);
         }
         else
         {
+            //play a sfx if can't move there
             AudioManager.AM.PlayAudioClip(1);
+            xNew = x; 
+            yNew = y;
         }
+    }
+
+    public void MovePlayerOnGrid(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        xNew = x; 
+        yNew = y;
+        transform.position = new Vector3(x, 0.75f, y);
     }
 }

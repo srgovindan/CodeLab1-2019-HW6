@@ -127,11 +127,13 @@ public class GridManager : MonoBehaviour
     
     public bool TileExistsOnGrid(int x, int y)
     {
+        //no tile outside grid boundaries
         if (x < 0 || x > GridSizeX-1 || y < 0 || y > GridSizeY-1)
         {
             //Cell does not exist
             return false;
         }
+        //no tile within the grid boundaries
         if (Grid[x][y] == null)
         {
             //Cell does not exist
