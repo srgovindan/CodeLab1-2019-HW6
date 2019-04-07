@@ -28,6 +28,7 @@ public class GridManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
        GetLevelLayoutData(1);
        CreateGrid();
        LoadLevelObjects(1);
@@ -72,29 +73,13 @@ public class GridManager : MonoBehaviour
             GridSizeX = line.Length;
         }
     }
-    Cell CreateCell(int x, int y)
-    {
-        Cell newCell = new Cell();
-        newCell.x = x;
-        newCell.y = y;
-        return newCell;
-    }  
+
     public void MoveGridObject(int x, int y, int xNew, int yNew, Player ob)
     {
         // if the cell exists on the grid and is within the grid bounds
         if (TileExistsOnGrid(xNew,yNew))
         {
             ob.MovePlayer(xNew,yNew);
-            // if the cell has a tile, let the object move there
-//            if (Grid[xNew][yNew].cellHasTile)
-//            {
-//                ob.transform.position = new Vector3(xNew, 0.75f, yNew);
-////                if (ob.name == "Player")
-////                {
-//////                    Grid[xNew][yNew].isOccupied = true;
-//////                    Grid[x][y].isOccupied = false;
-////                }
-//            }
         }
         // if the grid is occupied or is out of bounds, play a little animation or sfx
         if(!TileExistsOnGrid(xNew,yNew))
