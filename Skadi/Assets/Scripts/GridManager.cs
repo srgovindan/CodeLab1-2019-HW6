@@ -209,13 +209,13 @@ public class GridManager : MonoBehaviour
         }
         return false;
     }
-    public IEnumerator DelayedLoadLevel(float t=3f)
+    public IEnumerator DelayedLoadLevel(float t=2f)
     {
         yield return new WaitForSeconds(t);
         LoadLevel(levelNum);
     }
 
-    public IEnumerator DisplayUIText(string stringToDisplay, float t=2.5f)
+    public IEnumerator DisplayUIText(string stringToDisplay, float t=2f)
     {
         gameTextBox.text = stringToDisplay;
         yield return new WaitForSeconds(t);
