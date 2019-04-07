@@ -360,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNum: 0
   maxLevel: 10
-  gameTextBox: {fileID: 0}
+  gameTextBox: {fileID: 661865691}
   startGameText: Skadi
   wonGameText: Congratulations!
   playerPrefab: {fileID: 5317685443873441742, guid: cb446e7fa1a5d4d2c8100cb5bd6c9f6d,

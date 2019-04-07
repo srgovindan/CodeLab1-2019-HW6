@@ -1,6 +1,5 @@
-....*.
-.xxxx.
-.x##x.
-.x##x.
-.xxxx.
-..@...
+xxxxxxxxxxxx
+x##xx..xx##x
+x##xx..xx##x
+xxxxxxxxxxxx
+.....@*.....
