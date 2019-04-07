@@ -25,10 +25,10 @@ public class IceTile : Tile
             GetComponent<Renderer>().material = BrokenIceMaterial;
             //play sfx
             AudioManager.AM.PlayAudioClip(4);
-            
-            StartCoroutine(GridManager.GM.DelayedLoadLevel(3f));//delay before reloading a level
-            //reload from GM
-            GridManager.GM.LoadLevel(GridManager.GM.levelNum);
+            //delayed reload from GM
+            StartCoroutine(GridManager.GM.DelayedLoadLevel(.2f));
+            //instant reload
+            //GridManager.GM.LoadLevel(GridManager.GM.levelNum);
         }
     }
 }
