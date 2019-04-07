@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKey && canMove)
+        if (canMove)
         {
             MovePlayer();
         }
@@ -32,24 +32,36 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(UpKey))
         {
             yNew++;
+            MovePlayerOnGrid(xNew,yNew);
         }
         else if (Input.GetKeyDown(DownKey))
         {
             yNew--;
+            MovePlayerOnGrid(xNew,yNew);
         }
         else if (Input.GetKeyDown(LeftKey))
         {
             xNew--;
+            MovePlayerOnGrid(xNew,yNew);
         }
         else if (Input.GetKeyDown(RightKey))
         {
             xNew++;
-        }
-        
-        //move the player if the cell exists
-        if (GridManager.GM.TileExistsOnGrid(xNew, yNew))
-        {
             MovePlayerOnGrid(xNew,yNew);
+        }
+
+    }
+
+    public void MovePlayerOnGrid(int x, int y)
+    {
+        //move the player if the cell exists
+        if (GridManager.GM.TileExistsOnGrid(x, y))
+        {
+            this.x = x;
+            this.y = y;
+            ResetXY();
+            transform.position = new Vector3(x, 0.75f, y);
+            GridManager.GM.Grid[x][y].GetComponent<Tile>().PlayerSteppedOnTile();
         }
         else
         {
@@ -59,18 +71,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void MovePlayerOnGrid(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-        ResetXY();
-        transform.position = new Vector3(x, 0.75f, y);
-        GridManager.GM.Grid[x][y].GetComponent<Tile>().PlayerSteppedOnTile();
-    }
-
     public void PlayerFallAnimation()
-    {
-        
+    { 
         //play sfx
         AudioManager.AM.PlayAudioClip(4);
         //lerp animation

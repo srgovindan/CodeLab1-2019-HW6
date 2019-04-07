@@ -14,6 +14,6 @@ public class Tile : MonoBehaviour
 
     public virtual void PlayerSteppedOnTile()
     {
-        Debug.Log("Player stepped on "+x+","+y);
+        //Debug.Log("Player stepped on "+x+","+y);
     }
 }

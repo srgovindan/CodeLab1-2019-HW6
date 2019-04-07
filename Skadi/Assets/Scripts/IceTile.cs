@@ -6,32 +6,28 @@ public class IceTile : Tile
 {
     public Material CrackedIceMaterial;
     public Material BrokenIceMaterial;
-    int health = 2;
+    bool tileCracked;
 
     public override void PlayerSteppedOnTile()
     {
         base.PlayerSteppedOnTile();
-        //health--;
-        if (health == 1)
+        if (!tileCracked)
         {
-            //if health 2, change texture to cracked tile
+            tileCracked = true;
+            //if cracked change texture
             GetComponent<Renderer>().material = CrackedIceMaterial;
-            //GetComponent<Material>().SetTexture(1,CrackedIceTexture);
-            //crack tile sfx
+            //sfx
             AudioManager.AM.PlayAudioClip(3);
         }
-        else
+       else
         {
-            //if health >=1, player loses and reset level 
+            //player loses and reset level 
+            Debug.Log("Lose");
+            
 //            Player player = GridManager.player.GetComponent<Player>();
-//            //player.canMove = false;
 //            player.PlayerFallAnimation();
             //reload level
             
         }
-        Player player = GridManager.player.GetComponent<Player>();
-        //player.canMove = false;
-        player.PlayerFallAnimation();
-        
     }
 }

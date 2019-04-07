@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudioClip(int i, float volume=1f)
     {
-        Debug.Log("Playing Audio Clip " + i);
+        //Debug.Log("Playing Audio Clip " + i);
         GetComponent<AudioSource>().PlayOneShot(audioClips[i],volume);
     }
        
