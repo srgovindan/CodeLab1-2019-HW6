@@ -18,7 +18,7 @@ public class GoalTile : Tile
            //play sfx
            AudioManager.AM.PlayAudioClip(5);
            //reload from GM
-           GridManager.GM.ReloadLevel();
+           GridManager.GM.LoadLevel(GridManager.GM.levelNum);
        }
     }
 }

@@ -35,7 +35,22 @@ public class GridManager : MonoBehaviour
         levelNum = 1;
         LoadLevel(levelNum);
     }
-    
+    public void ReloadLevel()
+    {
+        Grid = null;
+        GameObject[] tiles =GameObject.FindGameObjectsWithTag("Tile");
+        Destroy(player);
+        foreach (var obj in tiles)
+        {
+            Destroy(obj);
+        }
+        GameObject[] iceTiles =GameObject.FindGameObjectsWithTag("IceTile");
+        Destroy(player);
+        foreach (var obj in iceTiles)
+        {
+            Destroy(obj);
+        }
+    }
     void GetLevelLayoutData(int levelIndex)
     {
         // hold the level file path in a string
@@ -125,29 +140,14 @@ public class GridManager : MonoBehaviour
     //public wrapper function to load a level from an ascii file
     public void LoadLevel(int i)
     {
+        ReloadLevel();
         GetLevelLayoutData(i);
         CreateGrid();
         LoadLevelObjects(i);
         //play start tile sfx
         AudioManager.AM.PlayAudioClip(2);
     }
-    public void ReloadLevel()
-    {
-        Grid = null;
-        GameObject[] tiles =GameObject.FindGameObjectsWithTag("Tile");
-        Destroy(player);
-        foreach (var obj in tiles)
-        {
-            Destroy(obj);
-        }
-        GameObject[] iceTiles =GameObject.FindGameObjectsWithTag("IceTile");
-        Destroy(player);
-        foreach (var obj in iceTiles)
-        {
-            Destroy(obj);
-        }
-        LoadLevel(levelNum);
-    }
+
     public bool TileExistsOnGrid(int x, int y)
     {
         //no tile outside grid boundaries
@@ -165,7 +165,6 @@ public class GridManager : MonoBehaviour
         //Cell exists
         return true;
     }
-
     public bool CheckIfAllIceTilesCracked()
     {
         //get all the tiles, set count to 0
@@ -173,20 +172,17 @@ public class GridManager : MonoBehaviour
         GameObject[] iceTiles = GameObject.FindGameObjectsWithTag("IceTile");
         foreach (var tile in iceTiles)
         {
-            if (tile.GetComponent<IceTile>().CrackedIceMaterial)
+            if (tile.GetComponent<IceTile>().tileCracked)
             {
                 numTilesCracked++;
             }
         }
+        Debug.Log(numTilesCracked);
         //if all tiles are cracked
-        if (numTilesCracked == iceTiles.Length-2)
+        if (numTilesCracked == iceTiles.Length)
         {
             return true;
         }
         return false;
     }
-    
-    
-    //TODO: Write a function to see if all Ice Tiles are cracked 
-    
 }

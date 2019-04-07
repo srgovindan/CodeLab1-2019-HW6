@@ -6,7 +6,7 @@ public class IceTile : Tile
 {
     public Material CrackedIceMaterial;
     public Material BrokenIceMaterial;
-    bool tileCracked;
+    public bool tileCracked;
 
     public override void PlayerSteppedOnTile()
     {
