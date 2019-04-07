@@ -107,3 +107,4 @@ MonoBehaviour:
   x: 0
   y: 0
   CrackedIceMaterial: {fileID: 2100000, guid: e7037fc4575e742439057d2ab13e5d5e, type: 2}
+  BrokenIceMaterial: {fileID: 2100000, guid: 7752052ffada640daa2d4bb4b31db525, type: 2}

@@ -71,15 +71,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void PlayerFallAnimation()
-    { 
-        //play sfx
-        AudioManager.AM.PlayAudioClip(4);
-        //lerp animation
-        float fallTime = 0.5f;
-        Vector3.Lerp(new Vector3(x, 0.75f, y), new Vector3(x, 0.5f, y),fallTime);
-    }
-
     void ResetXY()
     {
         xNew = x; 

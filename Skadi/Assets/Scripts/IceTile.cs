@@ -14,19 +14,17 @@ public class IceTile : Tile
         if (!tileCracked)
         {
             tileCracked = true;
-            //if cracked change texture
+            //change texture
             GetComponent<Renderer>().material = CrackedIceMaterial;
             //sfx
             AudioManager.AM.PlayAudioClip(3);
         }
        else
         {
+            //change texture
+            GetComponent<Renderer>().material = BrokenIceMaterial;
             //player loses and reset level 
             Debug.Log("Lose");
-            
-//            Player player = GridManager.player.GetComponent<Player>();
-//            player.PlayerFallAnimation();
-            //reload level
             
         }
     }
