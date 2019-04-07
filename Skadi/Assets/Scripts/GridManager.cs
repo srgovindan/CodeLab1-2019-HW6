@@ -192,4 +192,9 @@ public class GridManager : MonoBehaviour
         }
         return false;
     }
+    public IEnumerator DelayedLoadLevel(float f)
+    {
+        yield return new WaitForSeconds(f);
+        LoadLevel(levelNum);
+    }
 }
