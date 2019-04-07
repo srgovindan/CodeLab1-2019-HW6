@@ -28,6 +28,7 @@ public class GridManager : MonoBehaviour
         {
             Destroy(gameObject);
         } 
+        
         LoadLevel(1);
     }
     
@@ -123,6 +124,8 @@ public class GridManager : MonoBehaviour
         GetLevelLayoutData(i);
         CreateGrid();
         LoadLevelObjects(i);
+        //play start tile sfx
+        AudioManager.AM.PlayAudioClip(2);
     }
     
     public bool TileExistsOnGrid(int x, int y)

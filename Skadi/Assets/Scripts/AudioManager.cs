@@ -7,8 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager AM;
     public List<AudioClip> audioClips;
 
-
-    void Start()
+    void Awake()
     {
         // SINGLETON
         if (AM == null)
@@ -24,7 +23,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudioClip(int i, float volume=1f)
     {
-        Debug.Log("playing clip");
+        Debug.Log("Playing Audio Clip " + i);
         GetComponent<AudioSource>().PlayOneShot(audioClips[i],volume);
     }
        

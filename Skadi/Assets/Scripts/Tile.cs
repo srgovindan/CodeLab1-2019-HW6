@@ -11,4 +11,9 @@ public class Tile : MonoBehaviour
         this.y = y;
         transform.position = new Vector3(x, 0f, y);
     }
+
+    public virtual void PlayerSteppedOnTile()
+    {
+        Debug.Log("Player stepped on "+x+","+y);
+    }
 }

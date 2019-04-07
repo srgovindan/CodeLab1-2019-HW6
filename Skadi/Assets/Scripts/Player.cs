@@ -14,7 +14,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
+        if (Input.anyKey)
+        {
+            MovePlayer();
+        }
     }
 
     void MovePlayer()
@@ -46,8 +49,7 @@ public class Player : MonoBehaviour
         {
             //play a sfx if can't move there
             AudioManager.AM.PlayAudioClip(1);
-            xNew = x; 
-            yNew = y;
+            ResetXY();
         }
     }
 
@@ -55,8 +57,14 @@ public class Player : MonoBehaviour
     {
         this.x = x;
         this.y = y;
+        ResetXY();
+        transform.position = new Vector3(x, 0.75f, y);
+        GridManager.GM.Grid[x][y].GetComponent<Tile>().PlayerSteppedOnTile();
+    }
+
+    void ResetXY()
+    {
         xNew = x; 
         yNew = y;
-        transform.position = new Vector3(x, 0.75f, y);
     }
 }

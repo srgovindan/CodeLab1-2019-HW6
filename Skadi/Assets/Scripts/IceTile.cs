@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IceTile : Tile
 {
-   
+    int health = 2;
     // Start is called before the first frame update
     void Start()
     {
