@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622b43f4a8b2d4f9797d2f8c482da243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelNum: 0
   startTile: {fileID: 8268870915298155883, guid: 541c9f5baa4524d1096d6bb88e077087,
     type: 3}
   goalTile: {fileID: 8268870915298155883, guid: ea773ffad61cb457db8c2db903abdeae,
@@ -349,6 +350,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c671822fa413e4734aed4feb13e73dfb, type: 3}
   - {fileID: 8300000, guid: 0fb9b6d39965d47c992bf733efc3663a, type: 3}
   - {fileID: 8300000, guid: 2f944c66689814230b44d856c73c2097, type: 3}
+  - {fileID: 8300000, guid: 65f1951812aea44a0a5d3768ae6fcd68, type: 3}
 --- !u!82 &2089013067
 AudioSource:
   m_ObjectHideFlags: 0

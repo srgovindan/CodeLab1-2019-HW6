@@ -121,7 +121,7 @@ public class GridManager : MonoBehaviour
             }
         }
     }
-
+    
     //public wrapper function to load a level from an ascii file
     public void LoadLevel(int i)
     {
@@ -131,7 +131,23 @@ public class GridManager : MonoBehaviour
         //play start tile sfx
         AudioManager.AM.PlayAudioClip(2);
     }
-    
+    public void ReloadLevel()
+    {
+        Grid = null;
+        GameObject[] tiles =GameObject.FindGameObjectsWithTag("Tile");
+        Destroy(player);
+        foreach (var obj in tiles)
+        {
+            Destroy(obj);
+        }
+        GameObject[] iceTiles =GameObject.FindGameObjectsWithTag("IceTile");
+        Destroy(player);
+        foreach (var obj in iceTiles)
+        {
+            Destroy(obj);
+        }
+        LoadLevel(levelNum);
+    }
     public bool TileExistsOnGrid(int x, int y)
     {
         //no tile outside grid boundaries
@@ -150,16 +166,24 @@ public class GridManager : MonoBehaviour
         return true;
     }
 
-    public void ReloadLevel()
+    public bool CheckIfAllIceTilesCracked()
     {
-        Grid = null;
-        GameObject[] tiles =GameObject.FindGameObjectsWithTag("Tile");
-        Destroy(player);
-        foreach (var obj in tiles)
+        //get all the tiles, set count to 0
+        int numTilesCracked = 0;
+        GameObject[] iceTiles = GameObject.FindGameObjectsWithTag("IceTile");
+        foreach (var tile in iceTiles)
         {
-            Destroy(obj);
+            if (tile.GetComponent<IceTile>().CrackedIceMaterial)
+            {
+                numTilesCracked++;
+            }
         }
-        LoadLevel(levelNum);
+        //if all tiles are cracked
+        if (numTilesCracked == iceTiles.Length-2)
+        {
+            return true;
+        }
+        return false;
     }
     
     
